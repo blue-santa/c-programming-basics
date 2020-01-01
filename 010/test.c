@@ -3,13 +3,14 @@
 
 int main(int argc, char *argv[]) { 
 
-    _Bool a = 1;
-    _Bool b = 0;
-    _Bool result;
+    unsigned int a = 60; // 0011 1100 
+    unsigned int b = 13; // 0000 1101
+    unsigned int result;
 
-    result = a | b;
+    result = b >> 1;
+    // 0000 0110
 
-    printf("Result is: %d\n", result);
+    printf("result is: %d\n", result);
 
     return 0; 
 }
