@@ -1,15 +1,17 @@
 #include <stdio.h>
 
-#define MONTHS 12 
-
 int main(int argc, char *argv[]) { 
+    int array_values[10] = { 0, 1, 4, 9, 16 };
+    int i;
 
+    for (i = 5; i < 10; ++i) {
+        array_values[i] = i * i;
+    }
 
-    int days[MONTHS] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    int index;
+    for (i = 0; i < 10; i++) {
+        printf("array_values[%i] = %i\n", i, array_values[i]);
+    }
 
-    for (index = 0; index < MONTHS; index++) {
-        printf("Month %2d has %2d days.\n", index + 1, days[index]);
-    } 
-return 0; 
+    return 0;
+
 }
