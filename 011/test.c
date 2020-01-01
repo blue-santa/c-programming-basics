@@ -3,14 +3,21 @@
 
 int main(int argc, char *argv[]) { 
 
-    unsigned int a = 60; // 0011 1100 
-    unsigned int b = 13; // 0000 1101
-    unsigned int result;
+    if (argc != 2) {
+        printf("Please provide an initial command-line argument\n");
+        exit(1);
+    }
 
-    result = b >> 1;
-    // 0000 0110
+    char *initialMinutes = argv[1];
+    int minutes = atoi(initialMinutes);
+    int hourMins = 60;
+    int dayMins = 24 * hourMins;
+    int yearMins = 365 * dayMins;
 
-    printf("result is: %d\n", result);
+    double totalYears = (double)(yearMins) / (double)(minutes);
+
+    printf("Minutes: %d\n", minutes);
+    printf("Years: %f\n", totalYears);
 
     return 0; 
 }
