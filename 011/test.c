@@ -19,5 +19,18 @@ int main(int argc, char *argv[]) {
     printf("Minutes: %d\n", minutes);
     printf("Years: %f\n", totalYears);
 
+    printf("Enter a number: ");
+
+    int somethingHere;
+    scanf("%d", &somethingHere);
+
+    char somethingMore[100];
+
+    printf("Enter a string: ");
+    scanf("%s",somethingMore);
+
+    printf("The number is: %d\n", somethingHere);
+    printf("And the string is: %s\n", somethingMore);
+
     return 0; 
 }
