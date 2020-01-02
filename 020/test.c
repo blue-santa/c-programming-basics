@@ -22,22 +22,22 @@ int main(int argc, char *argv[]) {
 
     float totalYearlyAverage;
 
-    printf("YEAR    RAINFALL (INCHES)\n");
+    printf("YEAR\t\tRAINFALL (INCHES)\n");
     for (int i = 0; i < 5; i++) {
         yearlyAverages[i] = yearlyAverages[i] / 12;
         totalYearlyAverage += yearlyAverages[i];
-        printf("%d    %5.2f\n", 2010 + i, yearlyAverages[i]);
+        printf("%d\t\t%.2f\n", 2010 + i, yearlyAverages[i]);
     }
 
     totalYearlyAverage = totalYearlyAverage / 5;
     printf("\nTotal Year Average: %.3f\n", totalYearlyAverage);
 
 
-    printf("\nJAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC\n");
+    printf("\nJAN\tFEB\tMAR\tAPR\tMAY\tJUN\tJUL\tAUG\tSEP\tOCT\tNOV\tDEC\n");
 
     for (int j = 0; j < 12; j++) {
         monthlyAverages[j] = monthlyAverages[j] / 5;
-        printf("%3.1f ", monthlyAverages[j]);
+        printf("%3.1f\t", monthlyAverages[j]);
     }
 
     printf("\n"); 
