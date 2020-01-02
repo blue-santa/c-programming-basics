@@ -1,46 +1,94 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int greatestComDenom(const int x, const int y) {
+    int a;
+    int b;
+    int c;
+    int greatesD;
+
+    if (x < 0) {
+        b = x * -1;
+    } else {
+        b = x;
+    }
+
+    if (y < 0) {
+        c = y * -1;
+    } else {
+        c = y;
+    }
+
+    if (b > c) {
+        a = c;
+    } else {
+        a = b;
+    }
+
+    for (int i = 1; i <= a; i++) {
+
+        _Bool fitsB = 0;
+        _Bool fitsC = 0;
+
+        if (b % i == 0) {
+            fitsB = 1;
+        }
+
+        if (c % i == 0) {
+            fitsC = 1;
+        }
+
+        if (fitsB && fitsC) {
+            greatesD = i;
+        }
+
+    }
+
+    return greatesD;
+
+}
+
+float absoluteVal(float x) {
+    if (x < 0) 
+        x = x * -1;
+
+    return x; 
+}
+
+float calSquare(float x) {
+
+    x = absoluteVal(x);
+
+    double a;
+    a = sqrt((double)x);
+    x = (float)a;
+
+    return x; 
+}
 
 int main(int argc, char *argv[]) { 
 
-    float hardData[5][12] = {
-        {5.9, 4.3, 1.2, 5.3, 5.5, 2.1, 3.6, 2.1, 1.2, 1.3, 9.7, 3.1},
-        {3.9, 2.3, 1.2, 5.3, 0.5, 2.1, 3.6, 7.1, 1.2, 1.3, 3.7, 2.1},
-        {5.9, 4.3, 1.4, 5.3, 5.1, 2.1, 0.6, 2.1, 2.8, 1.7, 3.1, 5.1},
-        {2.9, 4.3, 0.4, 5.3, 1.1, 2.1, 0.6, 2.1, 2.8, 1.5, 0.5, 5.1},
-        {1.5, 3.0, 2.9, 5.3, 3.7, 1.8, 0.6, 1.9, 2.1, 1.7, 7.1, 5.1},
-    };
+    if (argc < 2) {
+        printf("Please provide two integers.");
+        exit(1);
+    } 
 
-    float yearlyAverages[5] = {0};
-    float monthlyAverages[12] = {0};
+    int x = atoi(argv[2]);
+    int y = atoi(argv[3]);
 
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 12; j++) { 
-            monthlyAverages[j] += hardData[i][j];
-            yearlyAverages[i] += hardData[i][j];
-        }
-    }
+    printf("\nx: %d", x);
+    printf("\ny: %d", y);
 
-    float totalYearlyAverage;
+    float b = (float) x;
 
-    printf("YEAR\t\tRAINFALL (INCHES)\n");
-    for (int i = 0; i < 5; i++) {
-        yearlyAverages[i] = yearlyAverages[i] / 12;
-        totalYearlyAverage += yearlyAverages[i];
-        printf("%d\t\t%.2f\n", 2010 + i, yearlyAverages[i]);
-    }
+    int condenom = greatestComDenom(x, y);
+    float absV = absoluteVal(b);
+    float square = calSquare(b);
 
-    totalYearlyAverage = totalYearlyAverage / 5;
-    printf("\nTotal Year Average: %.3f\n", totalYearlyAverage);
-
-
-    printf("\nJAN\tFEB\tMAR\tAPR\tMAY\tJUN\tJUL\tAUG\tSEP\tOCT\tNOV\tDEC\n");
-
-    for (int j = 0; j < 12; j++) {
-        monthlyAverages[j] = monthlyAverages[j] / 5;
-        printf("%3.1f\t", monthlyAverages[j]);
-    }
-
-    printf("\n"); 
+    printf("\ncondenom: %d", condenom);
+    printf("\nabsV: %.2f\n", absV);
+    printf("\nsquare: %.2f\n", square);
 
     return 0; 
 }
