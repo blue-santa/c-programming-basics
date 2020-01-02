@@ -2,35 +2,45 @@
 
 int main(int argc, char *argv[]) { 
 
-    int primes[100];
-    int totPrimes = 0;
+    float hardData[5][12] = {
+        {5.9, 4.3, 1.2, 5.3, 5.5, 2.1, 3.6, 2.1, 1.2, 1.3, 9.7, 3.1},
+        {3.9, 2.3, 1.2, 5.3, 0.5, 2.1, 3.6, 7.1, 1.2, 1.3, 3.7, 2.1},
+        {5.9, 4.3, 1.4, 5.3, 5.1, 2.1, 0.6, 2.1, 2.8, 1.7, 3.1, 5.1},
+        {2.9, 4.3, 0.4, 5.3, 1.1, 2.1, 0.6, 2.1, 2.8, 1.5, 0.5, 5.1},
+        {1.5, 3.0, 2.9, 5.3, 3.7, 1.8, 0.6, 1.9, 2.1, 1.7, 7.1, 5.1},
+    };
 
-    for (int i = 2; i <= 100; i++) {
-        printf("Testing %3d\n", i);
+    float yearlyAverages[5] = {0};
+    float monthlyAverages[12] = {0};
 
-        if (totPrimes == 0) {
-            primes[totPrimes] = i;
-            totPrimes++;
-            continue;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 12; j++) { 
+            monthlyAverages[j] += hardData[i][j];
+            yearlyAverages[i] += hardData[i][j];
         }
-
-        int k = 0;
-        int divisorsFound = 0;
-        while (k < totPrimes) {
-            if (i % primes[k] == 0) {
-                divisorsFound++;
-            }
-            k++;
-        }
-
-        if (divisorsFound == 0) {
-            printf("%d is a prime number\n", i);
-            primes[totPrimes] = i;
-            totPrimes++;
-        } 
     }
 
-    printf("The total number of primes found is: %d\n", totPrimes); 
+    float totalYearlyAverage;
+
+    printf("YEAR    RAINFALL (INCHES)\n");
+    for (int i = 0; i < 5; i++) {
+        yearlyAverages[i] = yearlyAverages[i] / 12;
+        totalYearlyAverage += yearlyAverages[i];
+        printf("%d    %5.2f\n", 2010 + i, yearlyAverages[i]);
+    }
+
+    totalYearlyAverage = totalYearlyAverage / 5;
+    printf("\nTotal Year Average: %.3f\n", totalYearlyAverage);
+
+
+    printf("\nJAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC\n");
+
+    for (int j = 0; j < 12; j++) {
+        monthlyAverages[j] = monthlyAverages[j] / 5;
+        printf("%3.1f ", monthlyAverages[j]);
+    }
+
+    printf("\n"); 
 
     return 0; 
 }
