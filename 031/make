@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+void adaptStr(char *str);
+
+int main(int argc, char *argv[]) { 
+
+    char str[] = "abcdefg";
+
+    adaptStr(str);
+
+    printf("reversed: %s\n", str);
+
+    return 0;
+}
+
+void adaptStr(char *str) {
+
+    long int len = strlen(str);
+    char temp[len];
+
+    strcpy(temp, str);
+
+    for (int i = 1; i <= len; i++) {
+        str[i] = temp[len - i];
+    }
+}
