@@ -9,12 +9,21 @@ int main(int argc, char *argv[]) {
     printf("Provide the max length of your char string: ");
     scanf("%d", &len);
 
-    char *ptr = (char*)malloc(len);
+    char *ptr = (char*)malloc(len * sizeof(char));
 
-    printf("Provide the string itself: ");
-    scanf("%s", ptr);
+    if (ptr != NULL) {
 
-    printf("You provided: %s\n", ptr);
+        printf("Provide the string itself: ");
+        scanf(" "); 
+        gets(ptr);
+        printf("You provided: %s\n", ptr);
+
+    } else {
+        printf("Incorrect limit entered");
+    }
+
+    free(ptr);
+    ptr = NULL;
 
     return 0;
 }
